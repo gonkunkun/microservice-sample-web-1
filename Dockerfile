@@ -1,4 +1,4 @@
-FROM node:11.10-alpine as builder
+FROM node:13.12-alpine as builder
 
 ENV NODE_ENV=production
 ARG GITHUB_CLIENT_ID
@@ -14,7 +14,7 @@ RUN yarn install && ./bin/node-prune
 COPY . .
 RUN yarn build
 
-FROM node:11.10-alpine
+FROM node:13.12-alpine
 
 WORKDIR /app
 ADD package.json ./
